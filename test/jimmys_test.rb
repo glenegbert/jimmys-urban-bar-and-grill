@@ -14,22 +14,22 @@ describe Jimmys do
       assert_equal 200, last_response.status
     end
 
-    it 'correctly loads home page' do
+    it 'correctly loads about us page' do
       get '/about-us'
       assert_equal 200, last_response.status
     end
 
-    it 'correctly loads home page' do
+    it 'correctly loads contact us page' do
       get '/contact-us'
       assert_equal 200, last_response.status
     end
 
-    it 'correctly loads home page' do
+    it 'correctly loads location page' do
       get '/location'
       assert_equal 200, last_response.status
     end
 
-    it 'correctly loads home page' do
+    it 'correctly loads menu page' do
       get '/menu'
       assert_equal 200, last_response.status
     end
