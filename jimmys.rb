@@ -1,5 +1,5 @@
 require 'sinatra'
 
-class Jimmys < Sinatrat::Application
+class Jimmys < Sinatra::Application
 
 end
