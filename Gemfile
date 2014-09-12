@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem 'sinatra', '~> 1.4.5'
+gem 'sequel', '~> 4.14.0'
 
 group :development do
   gem 'pry', '~> 0.10.1'
@@ -9,4 +10,6 @@ end
 
 group :test do
   gem 'minitest', '~> 5.4.1'
+  gem 'minitest-spec', '~> 0.0.2.1'
+  gem 'rack-test', '~> 0.6.2'
 end
