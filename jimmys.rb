@@ -36,4 +36,12 @@ class Jimmys < Sinatra::Application
     redirect '/'
   end
 
+  post '/menu' do
+    name         = params[:name]
+    description  = params[:description]
+    price        = params[:price]
+    menu_section = params[:menu_section]
+    redirect '/menu'
+  end
+
 end
