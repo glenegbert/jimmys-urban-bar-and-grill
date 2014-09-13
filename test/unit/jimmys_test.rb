@@ -1,5 +1,5 @@
-require_relative './test_helper'
-require_relative '../jimmys'
+require_relative '../test_helper'
+require_relative '../../jimmys'
 
 describe Jimmys do
   include Rack::Test::Methods
