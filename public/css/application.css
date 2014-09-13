@@ -1,0 +1,29 @@
+/* login  page styles */
+#login{
+  width: 15%;
+  border-radius: 10px;
+  margin: auto;
+  padding: 2em;
+  background: #ffffff;
+  overflow: hidden;
+}
+#login input{
+  display: block;
+  margin-bottom: 1em;
+  padding: 1em;
+  width: 86%;
+  font-size: 14px;
+}
+#login input[type='submit']{
+  width: 50%;
+  float: right;
+  font-size: 14px;
+  border: 1px solid #eaeaea;
+  cursor: pointer;
+  margin: 0;
+}
+.log-in{
+  background: #C35730;
+  height: 1500px;
+  padding: 10em;
+}
