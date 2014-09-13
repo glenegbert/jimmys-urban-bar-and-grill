@@ -10,7 +10,7 @@
 <head>
 
 	<meta charset="UTF-8" />
-	<title>About Us - Jimmy&#039;s Urban Bar and Grill </title>
+	<title>Contact Us - Jimmy&#039;s Urban Bar and Grill </title>
 
 	<!-- Pingback URL -->
 	<link rel="pingback" href="http://lodojimmys.com/xmlrpc.php" />
@@ -20,18 +20,16 @@
 
 
 <!-- This site is optimized with the Yoast WordPress SEO plugin v1.5.5 - https://yoast.com/wordpress/plugins/seo/ -->
-<link rel="canonical" href="http://lodojimmys.com/about-us/" />
+<link rel="canonical" href="http://lodojimmys.com/contact-us/" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="About Us - Jimmy&#039;s Urban Bar and Grill" />
-<meta property="og:description" content="Simple Yet Creative Dishes from our exhibition kitchen, are sure to stimulate the most sophisticated palette. Jimmy’s Urban Bar and Grill features Killer Cuisine; house smoked meats, and pork belly bacon, fresh gourmet burgers , amazing fried chicken sandwiches, creative vegetarian offerings, entrée sized salads and five star taste on a two star budget. Killer &hellip;" />
-<meta property="og:url" content="http://lodojimmys.com/about-us/" />
-<meta property="og:image" content="http://lodojimmys.com/wp-content/uploads/2014/08/our_story-main1.jpg" />
+<meta property="og:title" content="Contact Us - Jimmy&#039;s Urban Bar and Grill" />
+<meta property="og:url" content="http://lodojimmys.com/contact-us/" />
 <!-- / Yoast WordPress SEO plugin. -->
 
 <link rel="alternate" type="application/rss+xml" title=" &raquo; Feed" href="http://lodojimmys.com/feed/" />
 <link rel="alternate" type="application/rss+xml" title=" &raquo; Comments Feed" href="http://lodojimmys.com/comments/feed/" />
-<link rel="alternate" type="application/rss+xml" title=" &raquo; About Us Comments Feed" href="http://lodojimmys.com/about-us/feed/" />
+<link rel="alternate" type="application/rss+xml" title=" &raquo; Contact Us Comments Feed" href="http://lodojimmys.com/contact-us/feed/" />
 <link rel='stylesheet' id='nice-style-css'  href='http://lodojimmys.com/wp-content/themes/Jimmy/style.css?ver=3.9.2' type='text/css' media='all' />
 <link rel='stylesheet' id='nice-fancybox-css'  href='http://lodojimmys.com/wp-content/themes/Jimmy/includes/css/jquery.fancybox.css?ver=3.9.2' type='text/css' media='all' />
 <link rel='stylesheet' id='nice-options-styles-css'  href='http://lodojimmys.com/wp-content/themes/Jimmy/includes/css/nice-options.css?ver=3.9.2' type='text/css' media='all' />
@@ -65,13 +63,14 @@ var php_data = {"menu_text":"Go To..."};
 <script type='text/javascript' src='http://lodojimmys.com/wp-content/themes/Jimmy/includes/js/imagesloaded.min.js?ver=3.9.2'></script>
 <script type='text/javascript' src='http://lodojimmys.com/wp-content/themes/Jimmy/includes/js/slides.min.jquery.js?ver=3.9.2'></script>
 <script type='text/javascript' src='http://lodojimmys.com/wp-content/themes/Jimmy/includes/js/feedback.js?ver=3.9.2'></script>
+<script type='text/javascript' src='http://ajax.microsoft.com/ajax/jquery.validate/1.9/jquery.validate.min.js?ver=3.9.2'></script>
 <script type='text/javascript' src='http://lodojimmys.com/wp-includes/js/jquery/ui/jquery.ui.core.min.js?ver=1.10.4'></script>
 <script type='text/javascript' src='http://lodojimmys.com/wp-content/themes/Jimmy/includes/js/jquery.scrollTo-min.js?ver=3.9.2'></script>
 <script type='text/javascript' src='http://lodojimmys.com/wp-content/themes/Jimmy/includes/js/jquery.localscroll-min.js?ver=3.9.2'></script>
 <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://lodojimmys.com/xmlrpc.php?rsd" />
 <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://lodojimmys.com/wp-includes/wlwmanifest.xml" />
 <meta name="generator" content="WordPress 3.9.2" />
-<link rel='shortlink' href='http://lodojimmys.com/?p=9' />
+<link rel='shortlink' href='http://lodojimmys.com/?p=14' />
 
 <!-- Custom Favicon -->
 <link rel="shortcut icon" href="http://lodojimmys.com/wp-content/uploads/2014/08/favicon.ico"/>
@@ -87,16 +86,57 @@ var php_data = {"menu_text":"Go To..."};
 <!-- Custom CSS -->
 <link href="http://lodojimmys.com/wp-content/themes/Jimmy/custom.css" rel="stylesheet" type="text/css" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="About Us" />
-<meta property="og:url" content="http://lodojimmys.com/about-us/" />
-<meta property="og:description" content="Simple Yet Creative Dishes from our exhibition kitchen, are sure to stimulate the most sophisticated palette. Jimmy’s Urban Bar and Grill features Killer Cuisine; house smoked meats, and pork belly bacon, fresh gourmet burgers , amazing fried chicken sandwiches, creative vegetarian offerings, entrée sized salads and five star taste on a two star budget. Killer [&hellip;]" />
+<meta property="og:title" content="Contact Us" />
+<meta property="og:url" content="http://lodojimmys.com/contact-us/" />
+<meta property="og:description" content="" />
 	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
-	<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+		<script type="text/javascript">
+		//<![CDATA[
+		jQuery(document).ready(function($) {
+
+			jQuery('#nice_contact').validate({
+
+				messages: {
+						"name":{"required":"Please enter your name."},
+						"mail":{"required":"Please enter your email address."},
+						"message":{"required":"Please enter a message."}
+				},
+
+				submitHandler: function(form) {
+
+					var str = jQuery('#nice_contact').serialize();
+
+					jQuery.ajax({
+						type: "POST",
+						url: "http://lodojimmys.com/wp-admin/admin-ajax.php",
+						data: 'action=nice_contact_form&nonce=539360a6e8&' + str,
+						success: function(msg) {
+							jQuery("#node").ajaxComplete(function(event, request, settings){
+									if( msg == 'sent' ) {
+										jQuery(".nice-contact-form #node").hide();
+										jQuery(".nice-contact-form #success").fadeIn("slow");
+										jQuery("#nice_contact input[type=text], #nice_contact textarea").val("");
+									}else {
+										result = msg;
+										jQuery(".nice-contact-form #node").html(result);
+										jQuery(".nice-contact-form #node").fadeIn("slow");
+									}
+							});
+						}
+					});
+					return false;
+					form.submit();
+				}
+			});
+		});
+		//]]>
+		</script>
+			<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Gudea:400,700,400italic' rel='stylesheet' type='text/css'>
 
 </head>
 
-<body class="page page-id-9 page-template page-template-template-full-width-no-comments-php sidebar-right chrome">
+<body class="page page-id-14 page-template page-template-template-contact-php sidebar-right chrome">
 
 <!-- BEGIN #wrapper -->
 <div id="wrapper">
@@ -117,10 +157,10 @@ var php_data = {"menu_text":"Go To..."};
 
 
 			<div class="menu-main-navigation-container"><ul id="main-nav" class="nav fl sf-js-enabled clearfix"><li id="menu-item-23" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a href="http://lodojimmys.com/">Home</a></li>
-<li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-9 current_page_item menu-item-26"><a href="http://lodojimmys.com/about-us/">About Us</a></li>
+<li id="menu-item-26" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26"><a href="http://lodojimmys.com/about-us/">About Us</a></li>
 <li id="menu-item-22" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22"><a href="http://lodojimmys.com/menu/">Menu</a></li>
 <li id="menu-item-40" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a href="http://lodojimmys.com/location/">Location</a></li>
-<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25"><a href="http://lodojimmys.com/contact-us/">Contact Us</a></li>
+<li id="menu-item-25" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-25"><a href="http://lodojimmys.com/contact-us/">Contact Us</a></li>
 </ul></div>
 			<!-- END #navigation -->
 			</nav>
@@ -139,32 +179,71 @@ var php_data = {"menu_text":"Go To..."};
 
 
 <!-- BEGIN #content -->
-<section id="content" class="full-width about-us">
+<section id="content" class="full-width contact-us">
 
 
+
+
+							<aside class="nice-contact-sidebar">
+					<div class="box">
+
+						<header>
+							<h3>Address</h3>
+						</header>
+
+						1530 Blake St Unit B<br />
+Denver, CO 80202 <br />
+
+
+							<p>Phone: (303) 298-5000</p>
+
+
+					</div>
+
+
+				</aside>
+
+
+			<div class="nice-contact-form">
 
 				<header>
-					<h1 class="entry-title">About Us</h1>
+					<h3>Contact Us</h3>
 				</header>
 
-				<div class="entry clearfix">
 
-					<p><img class="aligncenter size-full wp-image-41" src="http://lodojimmys.com/wp-content/uploads/2014/08/our_story-main1.jpg" alt="our_story-main1" width="518" height="168" /></p>
-<p><strong><span style="color: #c3572d;">Simple Yet Creative</span></strong><br />
-Dishes from our exhibition kitchen, are sure to stimulate the most sophisticated palette. Jimmy’s Urban Bar and Grill features Killer Cuisine; house smoked meats, and pork belly bacon, fresh gourmet burgers , amazing fried chicken sandwiches, creative vegetarian offerings, entrée sized salads and five star taste on a two star budget. Killer Cocktails and Craft Beers on Tap. Our new bar with its magnificent selection of specialty drinks, martinis and a delightful outdoor patio area create an urban ambiance second to none. Jimmy’s Urban Bar and Grill serves lunch, Happy Hour Specials, Saturday / Sunday brunch and monthly seasonal dinner menu . In addition with our outside catering team (Urban Chefs Catering) we are able to cater functions offsite for any number of people.</p>
-<p><strong><span style="color: #c3572d;">Our Philosophy</span></strong><br />
-To sell delicious and remarkable food and drinks . That the food and beverages we sell meets the highest standards of quality , freshness and seasonality and combines both modern creative and traditional styles of cooking. Ton consistently provide our customers with impeccable service in a clean and comfortable environment. To have every customer who visits our restaurant to leave impressed by Jimmy’s Urban Bar &amp; Grill and be excited to come back soon.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+					<div class="entry">
+											</div>
 
-									</div>
+					<div id="node"></div>
+					<div id="success">Thank you for leaving a message.</div>
+
+					<form name="nice_contact" id="nice_contact" method="post" >
+					<p>
+						<label for="name" form="nice_contact">Your Name<span class="required">*</span></label>
+						<input type="text" id="name" name="name" value="" class="required" />
+					</p>
+					<p>
+						<label for="subject" form="nice_contact">Subject</label>
+						<input type="text" name="subject" id="subject" value="" />
+					</p>
+					<p>
+						<label for="mail" form="nice_contact">Your E-Mail<span class="required">*</span></label>
+						<input type="text" name="mail" id="mail" value="" class="required email" />
+					</p>
+					<p>
+						<label for="message" form="nice_contact">Your Message<span class="required">*</span></label><br />
+						<textarea name="message" id="message" class="required"></textarea>
+					</p>
+					<p>
+					<input type="submit" value="Submit" />
+					</p>
+					</form>
+				</div>
 
 
 
-
-
-<!-- END #content -->
-</section>
+		<!-- END #content -->
+		</section>
 
 	<!-- END #container -->
 	</div>
@@ -212,22 +291,22 @@ src="https://static.seatme.yelp.com/img/badges/black-158x34.png"></a>
 			<div class="widget-section odd last">
 				<div class="box widget widget_nice_feedback"><div class="feedback fade">
 <div class="feedback-list">
-<div id="quote-59" class="quote">
-<blockquote class="feedback-text no-img">Barnyard Mac and cheese with crust chicken is very good! Attentive service, friendly place</blockquote>
-<cite class="feedback-author">Darryl</cite>
+<div id="quote-46" class="quote">
+<blockquote class="feedback-text no-img">I thought it was going to be standard but it's was great. I would eat here again.
+Mac and cheese is great and the burgers are solid!</blockquote>
+<cite class="feedback-author">Gary M.</cite>
 </div>
 <div id="quote-47" class="quote">
 <blockquote class="feedback-text no-img">I love this place...Best food, drinks, atmosphere, and people!!</blockquote>
 <cite class="feedback-author">Miranda</cite>
 </div>
+<div id="quote-59" class="quote">
+<blockquote class="feedback-text no-img">Barnyard Mac and cheese with crust chicken is very good! Attentive service, friendly place</blockquote>
+<cite class="feedback-author">Darryl</cite>
+</div>
 <div id="quote-60" class="quote">
 <blockquote class="feedback-text no-img">Stopped by for lunch( twice ). Menu was excellent and priced well. I had the BBQ  brisket and pork sandwich. Also tried the green chili with pork. Wait staff cordial and knowledgable. Try the ghost fries. I'd go again.</blockquote>
 <cite class="feedback-author">Gil E.</cite>
-</div>
-<div id="quote-46" class="quote">
-<blockquote class="feedback-text no-img">I thought it was going to be standard but it's was great. I would eat here again.
-Mac and cheese is great and the burgers are solid!</blockquote>
-<cite class="feedback-author">Gary M.</cite>
 </div>
 </div>
 </div>
@@ -244,10 +323,10 @@ Mac and cheese is great and the burgers are solid!</blockquote>
 				<p>Copyright Jimmys Urban Bar and Grill 2014 (Design by Justin Murphy)</p>
 				<nav id="footer-navigation">
 					<div class="menu-main-navigation-container"><ul id="footer-nav" class="nav fl sf-js-enabled clearfix"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23"><a href="http://lodojimmys.com/">Home</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-9 current_page_item menu-item-26"><a href="http://lodojimmys.com/about-us/">About Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-26"><a href="http://lodojimmys.com/about-us/">About Us</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22"><a href="http://lodojimmys.com/menu/">Menu</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-40"><a href="http://lodojimmys.com/location/">Location</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25"><a href="http://lodojimmys.com/contact-us/">Contact Us</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-14 current_page_item menu-item-25"><a href="http://lodojimmys.com/contact-us/">Contact Us</a></li>
 </ul></div>				</nav>
 			</div>
 		</div>
