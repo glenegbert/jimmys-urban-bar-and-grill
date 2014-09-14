@@ -23,6 +23,8 @@
   margin: 0;
 }
 .log-in{
+  width: 100% !important;
+  text-align: center;
   background: #C35730;
   height: 1500px;
   padding: 10em;
