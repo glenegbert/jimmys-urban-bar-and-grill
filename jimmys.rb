@@ -1,6 +1,15 @@
 require 'sinatra'
 
 class Jimmys < Sinatra::Application
+  attr_reader :db
+
+  class << self
+    attr_accessor :db
+  end
+
+  before do
+    @db = self.class.db
+  end
 
   get '/' do
     erb :index
