@@ -15,6 +15,7 @@ class Jimmys < Sinatra::Application
   before do
     @db = self.class.db
   end
+  register Sinatra::Flash
 
   get '/' do
     erb :index
@@ -78,7 +79,20 @@ class Jimmys < Sinatra::Application
   end
 
   post '/login' do
+<<<<<<< HEAD
 
+=======
+    user = DB[:users][name: params[:user_name]]
+    hashed_password = Digest::SHA2.hexdigest(
+      params[:user_password]
+    )
+    if hashed_password == user[:user_password]
+      session[:user_id] = user[:id]
+      redirect '/admin'
+    else
+      "Username / Password not found"
+    end
+>>>>>>> adding post route for authentication and flash
   end
 
   get '/logout' do
