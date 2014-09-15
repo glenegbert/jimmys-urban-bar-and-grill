@@ -28,7 +28,7 @@ class Jimmys < Sinatra::Application
   end
 
   post '/login' do
-    
+
   end
 
   get '/logout' do

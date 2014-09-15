@@ -93,7 +93,7 @@ body {
 
 #content {
   width: 64.583%;
-  float: left;
+  float: right;
   overflow: hidden;
 }
 
@@ -101,6 +101,19 @@ body {
   float: right;
   width: 31.25%;
   overflow: hidden;
+  position: relative;
+  top: 10px;
+  left: -60px;
+  margin-bottom: 300px;
+}
+#sidebar li {
+  border-bottom: 1px solid rgba( 0, 0, 0, .1);
+}
+#sidebar a {
+  padding: 0;
+  margin: 0;
+  font-size: 1.5em;
+  line-height: 2em;
 }
 
 input,
@@ -1540,9 +1553,9 @@ body.page-template-template-menu-list-php .menu-box{ padding-bottom: 15px; borde
 body.page-template-template-menu-list-php .menu-card { width: 100%; }
 body.page-template-template-menu-list-php .menu-box { width: 100%; }
 body.page-template-template-menu-list-php #content,
-body.tax-menu-category section.menu-list { float: right; width: 73%; }
+body.tax-menu-category section.menu-list { float: left; width: 73%; }
 body.page-template-template-menu-list-php #sidebar,
-body.tax-menu-category #sidebar { float: left; width: 220px; }
+body.tax-menu-category #sidebar { float: right; width: 220px; }
 body.page-template-template-menu-list-php #sidebar ul,
 body.tax-menu-category #sidebar ul { margin: 0; }
 body.page-template-template-menu-list-php #sidebar ul .category-item a,
@@ -2056,7 +2069,7 @@ only screen and (min-resolution: 144dpi) {
   #footer-widgets .widget .widget_nice_social #social > li a,
   .widget_nice_social #social > li a {
     background-size: 1060px 90px;
-    background-image: url(images/social@2x.png) !important;
+    background-image: url(/images/social@2x.png) !important;
   }
 }
 
