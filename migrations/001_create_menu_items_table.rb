@@ -1,6 +1,6 @@
 Sequel.migration do
   up do
-    create_table(:menu_items)
+    create_table(:menu_items) do
       primary_key :id
       String  :name, :null=>false
       String  :description, :null=>true
