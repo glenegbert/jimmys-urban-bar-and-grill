@@ -1,4 +1,5 @@
 ENV['RACK_ENV'] = 'test'
+
 require 'minitest/autorun'
 require 'minitest/pride'
 require 'minitest/spec'
@@ -8,10 +9,10 @@ require 'capybara'
 require 'capybara/dsl'
 require_relative '../jimmys'
 
-DB = Sequel.connect('postgres://ephemere:password@localhost/jimmys_test')
-
 Capybara.app = Jimmys
 
+Jimmys.db = Sequel.connect(ENV['TEST_DATABASE_URL'])
+
 Capybara.register_driver :rack_test do |app|
-  Capybara::RackTest::Driver.new(app, :headers =>  { 'User-Agent' => 'Capybara' })
+  Capybara::RackTest::Driver.new(app, headers: { 'User-Agent' => 'Capybara' })
 end

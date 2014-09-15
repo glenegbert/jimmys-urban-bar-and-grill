@@ -7,6 +7,7 @@ gem 'pg', '~> 0.17.1'
 group :development do
   gem 'pry', '~> 0.10.1'
   gem 'shotgun', '~> 0.9'
+  gem 'dotenv', '~> 0.11.1'
 end
 
 group :test do

@@ -8,6 +8,9 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     coderay (1.1.0)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
     method_source (0.8.2)
     mime-types (2.3)
     mini_portile (0.6.0)
@@ -48,6 +51,7 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  dotenv (~> 0.11.1)
   minitest (~> 5.4.1)
   minitest-capybara
   minitest-spec (~> 0.0.2.1)
