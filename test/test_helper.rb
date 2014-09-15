@@ -8,6 +8,9 @@ require 'sequel'
 require 'capybara'
 require 'capybara/dsl'
 require_relative '../jimmys'
+require 'dotenv'
+
+Dotenv.load
 
 Capybara.app = Jimmys
 
