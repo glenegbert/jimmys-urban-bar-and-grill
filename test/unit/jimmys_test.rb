@@ -15,12 +15,12 @@ describe Jimmys do
     end
 
     it 'correctly loads about us page' do
-      get '/aboutus'
+      get '/about-us'
       assert_equal 200, last_response.status
     end
 
     it 'correctly loads contact us page' do
-      get '/contactus'
+      get '/contact-us'
       assert_equal 200, last_response.status
     end
 
