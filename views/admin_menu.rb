@@ -12,11 +12,11 @@
 
 
 
-				<div class="entry">
-									</div>
+<div class="entry">
+</div>
 
-				<div class="menu-card">
-				<div class="menu-box">
+<div class="menu-card">
+<div class="menu-box">
 <h2 class="menu-category"><a name="category-item-3">Shared Bites</a></h2>
 <p></p>
 <ul>
@@ -300,7 +300,7 @@ Bison topped with goat cheese, drunken onions, lettuce, tomato, blueberry bourbo
 </div></li>
 </ul>
 </div>
-				</div>
+</div>
 
 
 
@@ -310,8 +310,8 @@ Bison topped with goat cheese, drunken onions, lettuce, tomato, blueberry bourbo
 </section>
 
 <aside id="sidebar">
-	<ul><li class="category-item"><a href="#category-item-3">Shared Bites</a><li class="category-item"><a href="#category-item-4">Salads</a><li class="category-item"><a href="#category-item-5">Blake Street Bowls</a><li class="category-item"><a href="#category-item-6">Vegetarian</a><li class="category-item"><a href="#category-item-7">Specialty Sandwiches</a><li class="category-item"><a href="#category-item-8">Dinner Entrees</a><li class="category-item"><a href="#category-item-9">Smokehouse</a><li class="category-item"><a href="#category-item-10">Jimmy's Burger Creations</a></ul>
+<ul><li class="category-item"><a href="#category-item-3">Shared Bites</a><li class="category-item"><a href="#category-item-4">Salads</a><li class="category-item"><a href="#category-item-5">Blake Street Bowls</a><li class="category-item"><a href="#category-item-6">Vegetarian</a><li class="category-item"><a href="#category-item-7">Specialty Sandwiches</a><li class="category-item"><a href="#category-item-8">Dinner Entrees</a><li class="category-item"><a href="#category-item-9">Smokehouse</a><li class="category-item"><a href="#category-item-10">Jimmy's Burger Creations</a></ul>
 </aside>
 
-	<!-- END #container -->
-	</div>
+<!-- END #container -->
+</div>
