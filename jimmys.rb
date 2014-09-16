@@ -79,9 +79,6 @@ class Jimmys < Sinatra::Application
   end
 
   post '/login' do
-<<<<<<< HEAD
-
-=======
     user = DB[:users][name: params[:user_name]]
     hashed_password = Digest::SHA2.hexdigest(
       params[:user_password]
@@ -92,7 +89,6 @@ class Jimmys < Sinatra::Application
     else
       "Username / Password not found"
     end
->>>>>>> adding post route for authentication and flash
   end
 
   get '/logout' do
