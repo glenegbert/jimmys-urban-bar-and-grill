@@ -1,5 +1,7 @@
 require 'sinatra'
 require 'pony'
+require 'bcrypt'
+
 # require 'sinatra-flash'
 
 class Jimmys < Sinatra::Application
@@ -79,6 +81,9 @@ class Jimmys < Sinatra::Application
   end
 
   post '/login' do
+    # my_password = BCrypt::Password.create("my password")
+    # my_password = BCrypt::Password.new("$2a$10$vI8aWBnW3fID.ZQ4/zo1G.q1lRps.9cGLcZEiGDMVr5yUP1KUOYTa")
+
     user = DB[:users][name: params[:user_name]]
     hashed_password = Digest::SHA2.hexdigest(
       params[:user_password]
