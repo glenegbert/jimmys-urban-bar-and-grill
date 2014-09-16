@@ -2436,7 +2436,7 @@ only screen and (min-resolution: 144dpi) {
   float: right;
 }
 section{
-  clear: both;
+  overflow: hidden;
 }
 .log-in, .admin-menu{
   height: 40em;
@@ -2487,5 +2487,7 @@ section{
   padding: 0;
   overflow: hidden;
   margin: 1em 0;
-
+}
+article{
+  clear: both;
 }
