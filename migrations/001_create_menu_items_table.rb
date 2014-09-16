@@ -6,7 +6,7 @@ Sequel.migration do
       String  :description, :null=>true
       Integer :price, :null=>false
       # Integer :menu_section_id, :null=>false
-      # Integer :foregin_key, :null=>false
+      # foregin_key :menu_section_id, :null=>false
     end
   end
 
