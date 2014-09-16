@@ -56,11 +56,18 @@ class Jimmys < Sinatra::Application
   end
 
   post '/admin-menu' do
-    # name         = params[:name]
-    # description  = params[:description]
-    # price        = params[:price]
-    # menu_section = params[:menu_section]
+    db[:menu_section][:name]       = params[menu[section_name]]
+    db[:menu_section][:details]    = params[menu[section_description]]
+    db[:menu_items][:name]         = params[menu[item_name]]
+    db[:menu_items][:price]        = params[menu[price]]
+    db[:menu_items][:description]  = params[menu[item_description]]
+    db[:menu_items][:menu_section] = params[menu[menu_section]]
+    db[:menu_items][:menu_section] = params[menu[item_menu_section]]
     redirect '/admin-menu'
+  end
+
+  not_found do
+    erb :error
   end
 
 end
