@@ -1,17 +1,62 @@
-<h2>Menu</h2>
-
-<h4>Add Menu Section</h4>
-<form id="menu-sections" action="/menu" method="post">
-  <input type="text" name="section_name" value="" placeholder="Menu Section">
-  <input type="text" name="section_description" value="" placeholder="Description">
-  <input type="submit" value="Create Section">
-</form>
-
-<h4>Add Menu Item</h4>
-<form id="menu-items" action="/menu" method="post">
-  <input type="text" name="item_name" value="" placeholder="Menu Item">
-  <input type="text" name="item_description" value="" placeholder="Description">
-  <input type="text" name="item_price" value="" placeholder="Price">
-  <input type="text" name="item_menu_section" value="" placeholder="Menu Section">
-  <input type="submit" value="Add Item">
-</form>
+<section id="content" class="admin-menu" style="text-align: center; width: 100% !important;">
+  <section class="admin-form">
+    <h2>
+      Admin Menu
+      <a href="/logout" class="page-button pull-right">Log Out</a>
+    </h2>
+    <section>
+      <h3>Add Menu Section</h3>
+      <form id="menu-sections" action="/menu" method="post">
+        <input type="text" name="menu[section_name]" value="" placeholder="Menu Section">
+        <input type="text" name="menu[section_description]" value="" placeholder="Description">
+        <input type="submit" value="Create Section">
+      </form>
+      <%#= menu_section.each do |section| %>
+        <article class="menu-section">
+          <div>
+            <%#= section.title %>
+            <h4>Godzilla does Tokoyo</h4>
+            <%#= section.description %>
+            this shit will fuck you up
+          </div>
+          <div>
+            <form action="/<%#= section.id %>" method="POST" class="menu-actions">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete">
+            </form>
+            <a href="/<%#= section.id %>/edit" class="page-button">Edit</a>
+          </div>
+        </article>
+      <%# end %>
+    </section>
+    <section>
+      <h3>Add Menu Item</h3>
+      <form id="menu-items" action="/menu" method="post">
+        <input type="text" name="menu[item_name]" value="" placeholder="Menu Item">
+        <input type="text" name="menu[item_description]" value="" placeholder="Description">
+        <input type="text" name="menu[item_price]" value="" placeholder="Price">
+        <input type="text" name="menu[item_menu_section]" value="" placeholder="Menu Section">
+        <input type="submit" value="Add Item">
+      </form>
+      <%#= menu_item.each do |item| %>
+        <article class="menu-item">
+          <div>
+            <%#= item.title %>
+            <h4>Potatoes of Doooooooom!</h4>
+            <%#= item.description %>
+            there be cheese up in this shit
+            <%#= item.price %>
+            ................................$50.00
+          </div>
+          <div>
+            <form action="/<%#= section.id %>" method="POST" class="menu-actions">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete">
+            </form>
+            <a href="/<%#= section.id %>/edit" class="page-button">Edit</a>
+          </div>
+        </article>
+      <%# end %>
+    </section>
+  </section>
+</section>

@@ -2430,3 +2430,62 @@ only screen and (min-resolution: 144dpi) {
   .widget #s { width: 83.5%; }
 
 }
+
+/* log-in */
+.pull-right{
+  float: right;
+}
+section{
+  clear: both;
+}
+.log-in, .admin-menu{
+  height: 40em;
+  background: #C3572D;
+  padding: 4em;
+}
+#login{
+  margin-top: 14em;
+}
+.page-button{
+  border-radius: 3px;
+  background: #333;
+  color: #fff;
+  font-family: 'Bree Serif', serif;
+  width: auto;
+  padding: 7px 10px;
+  line-height: 25px;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  margin: 0;
+}
+.admin-form{
+  clear: both;
+  text-align: left;
+}
+.admin-form h3{
+  clear: both;
+  margin-top: 3em;
+}
+.admin-form h4{
+  margin: 0;
+}
+.menu-actions{
+  float: left;
+  margin: 0;
+}
+.menu-actions input{
+  margin: 0 10px;
+  float: left;
+}
+.menu-section a, .menu-item a{
+  float: left;
+}
+.menu-section div, .menu-item div{
+  width: 40%;
+  float: left;
+  padding: 0;
+  overflow: hidden;
+  margin: 1em 0;
+
+}
