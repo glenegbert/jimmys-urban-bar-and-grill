@@ -1,6 +1,8 @@
 require 'sinatra'
+# require 'sinatra-flash'
 
 class Jimmys < Sinatra::Application
+  # register Sinatra::Flash
   enable :sessions
   attr_reader :db
 
@@ -32,8 +34,12 @@ class Jimmys < Sinatra::Application
     erb :menu
   end
 
-  get '/login' do
-    erb :login
+  get '/admin' do
+    #if !session
+      erb :login
+    #else
+      # redirect '/admin-menu'
+    #end
   end
 
   post '/login' do
@@ -45,12 +51,16 @@ class Jimmys < Sinatra::Application
     redirect '/'
   end
 
-  post '/menu' do
-    name         = params[:name]
-    description  = params[:description]
-    price        = params[:price]
-    menu_section = params[:menu_section]
-    redirect '/menu'
+  get '/admin-menu' do
+    erb :admin_menu
+  end
+
+  post '/admin-menu' do
+    # name         = params[:name]
+    # description  = params[:description]
+    # price        = params[:price]
+    # menu_section = params[:menu_section]
+    redirect '/admin-menu'
   end
 
 end
