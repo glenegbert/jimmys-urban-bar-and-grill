@@ -2436,11 +2436,11 @@ only screen and (min-resolution: 144dpi) {
   float: right;
 }
 section{
-  overflow: hidden;
+  overflow: visible;
 }
 .log-in, .admin-menu{
   height: 40em;
-  background: #C3572D;
+  background: #F9F1DF;
   padding: 4em;
 }
 #login{
@@ -2490,4 +2490,18 @@ section{
 }
 article{
   clear: both;
+}
+
+#content_admin_menu{
+  text-align: center;
+  width: 100% !important;
+  overflow: scroll;
+}
+
+#add_menu_item{
+  padding-top: 112px;
+}
+
+#content_admin_menu > section > h1 {
+padding-bottom: 29px;
 }

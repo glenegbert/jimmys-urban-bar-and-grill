@@ -1,4 +1,6 @@
-<section id="content" class="edit-menu" style="text-align: center; width: 100% !important;">
+<section id="content" class="edit-menu" style="text-align: center; width: 100% !important;padding-top: 78px;padding-bottom: 112px;">
+        <h1>Edit Menu Section</h1>
+
   <form id="update-section" action="/admin-menu/sections/<%= menu_section[:id] %>/edit" method="post">
     <input type="hidden" name="_method" value="PATCH">
     <input type="text" name="menu[section_name]" value="<%= menu_section[:name] %>" placeholder="Section Name">
