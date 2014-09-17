@@ -2,13 +2,14 @@ require 'sinatra'
 require 'pony'
 require 'bcrypt'
 
+# require 'bcrypt'
 # require 'sinatra-flash'
 
 class Jimmys < Sinatra::Application
   # register Sinatra::Flash
   enable :sessions
 
-  attr_reader :db
+  attr_reader :db, :current_user
 
   class << self
     attr_accessor :db
@@ -17,7 +18,6 @@ class Jimmys < Sinatra::Application
   before do
     @db = self.class.db
   end
-  register Sinatra::Flash
 
   get '/' do
     erb :index
@@ -67,27 +67,56 @@ class Jimmys < Sinatra::Application
     erb :menu
   end
 
-  get '/admin' do
-    #if !session
-      erb :login
+  get '/create-user' do
+    erb :create_user
+  end
+
+  post '/create-user' do
+    pw1   = params[:password1]
+    pw2   = params[:password2]
+    users = db[:users]
+    users.each do |user|
+      if user[:name] == params[:user_name]
+        @current_user = user
+      else
+        if valid_password?(pw1, pw2)
+          users.insert(name: params[:user_name], password: params[:password1])
+          @current_user = db[:users].to_a.last
+        end
+      end
+    end
+    redirect '/admin-menu'
+  end
+
+  get '/admin-menu' do
+    #if session[:is_admin] == false
+      # redirect '/admin'#, locals: { flash[:message] ="Username / Password not found" }
     #else
-      # redirect '/admin-menu'
+      erb :admin_menu, locals: { user_name: current_user }
     #end
+  end
+
+  post '/admin-menu' do
+    redirect '/admin-menu'
+  end
+
+  not_found do
+    erb :error
+  end
+
+  get '/login' do
+    erb :login
   end
 
   post '/login' do
     # my_password = BCrypt::Password.create("my password")
     # my_password = BCrypt::Password.new("$2a$10$vI8aWBnW3fID.ZQ4/zo1G.q1lRps.9cGLcZEiGDMVr5yUP1KUOYTa")
-
-    user = DB[:users][name: params[:user_name]]
-    hashed_password = Digest::SHA2.hexdigest(
-      params[:user_password]
-    )
-    if hashed_password == user[:user_password]
-      session[:user_id] = user[:id]
-      redirect '/admin'
+    user = db[:user].find_by_user_name(params[:user_name])
+    if user[:password] == params[:password]
+      session[:is_admin] = True
+      redirect '/admin_menu'
     else
-      "Username / Password not found"
+      redirect '/admin'#, locals: { flash[:message] ="Username / Password not found" }
     end
   end
 
@@ -178,6 +207,11 @@ class Jimmys < Sinatra::Application
 
   not_found do
     erb :error
+
+  private
+
+  def valid_password?(pw1, pw2)
+    pw1 == pw2
   end
 
 

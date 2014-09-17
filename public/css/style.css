@@ -2438,7 +2438,7 @@ only screen and (min-resolution: 144dpi) {
 section{
   overflow: visible;
 }
-.log-in, .admin-menu{
+.log-in, .admin-menu, .create-user{
   height: 40em;
   background: #F9F1DF;
   padding: 4em;
