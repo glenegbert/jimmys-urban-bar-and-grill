@@ -14,7 +14,7 @@
       <% menu_sections.each do |section| %>
         <article class="menu-section">
           <div>
-            <h2><%= section[:name] %></h2>
+            <h2><%= "#{section[:name]}".capitalize %></h2>
             <h4><%= section[:details] %></h4>
           </div>
           <div>
@@ -40,12 +40,11 @@
         </select>
         <input type="submit" value="Add Item">
       </form>
-      <% menu_items.each do |item| %>
+      <% menu_items.sort_by{|item| item[:menu_section_id]}.each do |item| %>
         <article class="menu-item">
           <div>
-            <h4><%= item[:name] %></h4>
-            <h4><%= item[:description] %></h4>
-            ................................ <%= item[:price] %>
+            <h2><%= "#{item[:name]}".capitalize %></h2>
+            <h4><%= item[:description] %><%= "$#{item[:price]}".rjust(10, '.') %></h4>
           </div>
           <div>
             <form action="/admin-menu/items/<%= item[:id] %>" method="POST" class="menu-actions">
