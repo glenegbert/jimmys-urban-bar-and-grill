@@ -10,7 +10,6 @@ class User
   def create?
     if valid_user_name?
       create
-      true
     else
       false
     end
@@ -18,20 +17,12 @@ class User
 
   def valid_user_name?
     users = db[:users].to_a
-    users.each do |user|
-      return false if user[:name] == user_name
-    end
-    true
+    users.none? { |user| user[:name] == user_name }
   end
 
   def create
     db[:users].insert(name: user_name, password_hash: @password_hash)
+    true
   end
 
 end
-
-
-#questions:
-  #is DB creating users?  NO
-  #are params[:success] being passed to the view?   YES
-  #is it redirecting to the right view? KIND OF

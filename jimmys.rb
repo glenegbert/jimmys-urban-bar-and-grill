@@ -75,22 +75,11 @@ class Jimmys < Sinatra::Application
       password_salt = BCrypt::Engine.generate_salt
       password_hash = BCrypt::Engine.hash_secret(params[:password1], password_salt)
       success = User.new(db, params[:user_name], password_hash).create?
-      if success
-        redirect "/admin-menu?success=#{success}"
-      else
-        redirect "/create-user?success=#{success}"
-      end
+      route =  success ? 'admin-menu' : 'create-user'
+      redirect "/#{route}?success=#{success}"
+    else
+      redirect "/create-user?success=false"
     end
-
-    # user.valid_password?
-    # if user.valid_credentials?
-    #   user.create
-    #   message = "true"
-    #   redirect "/admin-menu?success=#{message}"
-    # else
-    #   message = "false"
-    #   redirect "/create-user?success=#{message}"
-    # end
   end
 
   get '/admin-menu' do
