@@ -11,21 +11,23 @@
         <input type="text" name="menu[section_description]" value="" placeholder="Description">
         <input type="submit" value="Create Section">
       </form>
-      <% menu_sections.each do |section| %>
+      <%#= menu_section.each do |section| %>
         <article class="menu-section">
           <div>
-            <h6><%= section[:name] %></h6>
-            <%= section[:details] %>
+            <%#= section.title %>
+            <h4>Godzilla does Tokoyo</h4>
+            <%#= section.description %>
+            this shit will fuck you up
           </div>
           <div>
-            <form action="/admin-menu/sections/<%= section[:id] %>" method="POST" class="menu-actions">
+            <form action="/<%#= section.id %>" method="POST" class="menu-actions">
               <input type="hidden" name="_method" value="DELETE">
               <input type="submit" value="Delete">
             </form>
-            <a href="/<%= section[:id] %>/edit" class="page-button">Edit</a>
+            <a href="/<%#= section.id %>/edit" class="page-button">Edit</a>
           </div>
         </article>
-      <% end %>
+      <%# end %>
     </section>
     <section>
       <h3>Add Menu Item</h3>
@@ -36,25 +38,25 @@
         <input type="text" name="menu[item_menu_section]" value="" placeholder="Menu Section">
         <input type="submit" value="Add Item">
       </form>
-      <% menu_items.each do |item| %>
+      <%#= menu_item.each do |item| %>
         <article class="menu-item">
           <div>
-            <%= item[:name] %>
+            <%#= item.title %>
             <h4>Potatoes of Doooooooom!</h4>
-            <%= item[:description] %>
+            <%#= item.description %>
             there be cheese up in this shit
-            <%= item[:price] %>
+            <%#= item.price %>
             ................................$50.00
           </div>
           <div>
-            <form action="/admin-menu/<%= item[:id] %>" method="POST" class="menu-actions">
+            <form action="/<%#= section.id %>" method="POST" class="menu-actions">
               <input type="hidden" name="_method" value="DELETE">
               <input type="submit" value="Delete">
             </form>
-            <a href="/admin-menu/<%= item[:id] %>/edit" class="page-button">Edit</a>
+            <a href="/<%#= section.id %>/edit" class="page-button">Edit</a>
           </div>
         </article>
-      <% end %>
+      <%# end %>
     </section>
   </section>
 </section>

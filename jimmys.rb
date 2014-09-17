@@ -4,7 +4,6 @@ require 'sinatra'
 class Jimmys < Sinatra::Application
   # register Sinatra::Flash
   enable :sessions
-
   attr_reader :db
 
   class << self
@@ -69,7 +68,8 @@ class Jimmys < Sinatra::Application
   end
 
   get '/admin-menu' do
-    erb :admin_menu, locals: {:menu_items => db[:menu_items].to_a, :menu_sections => db[:menu_sections].to_a}
+    erb :admin_menu
+    # , locals: { menu_items: items_in_section, menu_section: db[:menu_section].to_a }
   end
 
   post '/admin-menu' do
@@ -90,7 +90,8 @@ class Jimmys < Sinatra::Application
     if !name.nil? && !description.nil? && !price.nil? && !section.nil?
       db[:menu_items].insert(:name => name, :description => description, :price => price, :menu_section_id => section)
     end
-
+    require 'pry'
+    binding.pry
     # db[:menu_sections][:name].insert(section_name)
     # db[:menu_sections][:details].insert(section_description)
     # insert(section_description).into(db[:menu_sections][:section_description])
@@ -101,11 +102,6 @@ class Jimmys < Sinatra::Application
     # db[:menu_items][:name]
     # db[:menu_items][:menu_section] = params[menu[menu_section]]
     # db[:menu_items][:menu_section] = params[menu[item_menu_section]]
-    redirect '/admin-menu'
-  end
-
-  delete '/admin-menu/sections/:id' do |id|
-    db[:menu_sections].where(id: id.to_i).delete
     redirect '/admin-menu'
   end
 
