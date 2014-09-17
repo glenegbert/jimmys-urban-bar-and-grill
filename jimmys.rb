@@ -71,19 +71,26 @@ class Jimmys < Sinatra::Application
   end
 
   post '/create-user' do
-    pw1   = BCrypt::Password.create(params[:password1])
-    pw2   = BCrypt::Password.create(params[:password2])
-    user  = User.new(db, params[:user_name], pw1, pw2)
-    if user.valid_credentials?
-      user.create
-      message = "true"
-      redirect "/admin-menu?success=#{message}"
-    else
-      message = "false"
-      redirect "/create-user?success=#{message}"
+    if params[:password1] == params[:password2]
+      password_salt = BCrypt::Engine.generate_salt
+      password_hash = BCrypt::Engine.hash_secret(params[:password1], password_salt)
+      success = User.new(db, params[:user_name], password_hash).create?
+      if success
+        redirect "/admin-menu?success=#{success}"
+      else
+        redirect "/create-user?success=#{success}"
+      end
     end
 
-
+    # user.valid_password?
+    # if user.valid_credentials?
+    #   user.create
+    #   message = "true"
+    #   redirect "/admin-menu?success=#{message}"
+    # else
+    #   message = "false"
+    #   redirect "/create-user?success=#{message}"
+    # end
   end
 
   get '/admin-menu' do
@@ -168,8 +175,6 @@ class Jimmys < Sinatra::Application
   end
 
   get '/admin-menu/sections/:id/edit' do |id|
-    # require 'pry'
-    # binding.pry
     section = db[:menu_sections].where(id: id.to_i).to_a.first
     erb :edit_menu_section, locals: { menu_section: section }
   end
