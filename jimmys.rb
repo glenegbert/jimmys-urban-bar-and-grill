@@ -76,14 +76,17 @@ class Jimmys < Sinatra::Application
 
   post '/create-user' do
     if params[:password1] == params[:password2]
-      password_salt = BCrypt::Engine.generate_salt
-      password_hash = BCrypt::Engine.hash_secret(params[:password1], password_salt)
-      success = User.new(db, params[:user_name], password_hash).create?
-      route =  success ? 'admin-menu' : 'create-user'
-      redirect "/#{route}?success=#{success}"
-    else
-      redirect "/create-user?success=false"
+      # password_salt = BCrypt::Engine.generate_salt
+      # password_hash = BCrypt::Engine.hash_secret(params[:password1], password_salt)
+      password_hash = BCrypt::Password.create(params[:password1])
+      user = User.new(db, params[:user_name], password_hash)
+      if success = user.create?
+        user = db[:users].where(name: params[:user_name]).to_a.first
+        session[:user_id] = user[:id]
+        redirect '/admin-menu?success=true'
+      end
     end
+    redirect "/create-user?success=false"
   end
 
   get '/admin-menu' do
@@ -109,13 +112,16 @@ class Jimmys < Sinatra::Application
   end
 
   post '/login' do
-    user = db[:user].find_by_user_name(params[:user_name])
-    if user[:password_hash] == params[:password_hash]
-      session[:is_admin] = True
-      redirect '/admin_menu?success=true'
-    else
-      redirect '/login?success=false'
+    user = db[:users].where(name: params[:user_name]).to_a.first
+    unless user.nil? || user[:password_hash].nil?
+      my_password = BCrypt::Password.new(user[:password_hash])
+      if user && my_password == params[:user_password]
+        id = user[:id]
+        session[:user_id] = id
+        redirect "/admin-menu?success=true"
+      end
     end
+    redirect '/login?success=false'
   end
 
   get '/logout' do
