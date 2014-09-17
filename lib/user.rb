@@ -1,27 +1,31 @@
 class User
   attr_reader :db, :user_name
 
-  def initialize(db, user_name, pw1, pw2)
-    @db        = db
-    @user_name = user_name
-    @pass_hash = pw1 if valid_password?(pw1, pw2)
+  def initialize(db, user_name, password_hash)
+    @db            = db
+    @user_name     = user_name
+    @password_hash = password_hash
   end
 
-  def valid_password?(pw1, pw2)
-    pw1 == pw2
+  def create?
+    if valid_user_name?
+      create
+      true
+    else
+      false
+    end
   end
 
-  def valid_credentials?
-    return false if @pass_hash.nil?
+  def valid_user_name?
     users = db[:users].to_a
     users.each do |user|
-      return false if user[:name] == params[:user_name]
+      return false if user[:name] == user_name
     end
     true
   end
 
   def create
-    db[:users].insert(name: user_name, password: @pass_hash)
+    db[:users].insert(name: user_name, password_hash: @password_hash)
   end
 
 end
