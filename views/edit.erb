@@ -1,0 +1,46 @@
+<section id="content" class="admin-menu" style="text-align: center; width: 100% !important;">
+  <section class="admin-form">
+    <h2>
+      Admin Menu
+      <a href="/logout" class="page-button pull-right">Log Out</a>
+    </h2>
+    <section>
+      <h3>Edit Menu Section</h3>
+
+    </section>
+    <section>
+      <h3>Add Menu Section</h3>
+      <% menu_section.each do |column| %>
+        <article class="menu-item">
+          <div>
+            <%= column[:name] %>
+            <h4>Potatoes of Doooooooom!</h4>
+            <%= column[:details] %>
+          </div>
+
+
+
+          <form id="menu-sections" action="/admin-menu" method="post">
+            <input type="text" name="menu[section_name]" value="" placeholder="<%= column[:name] %>">
+            <input type="text" name="menu[section_description]" value="" placeholder="<%= column[:details] %>">
+            <input type="submit" value="Create Section">
+          </form>
+
+
+
+
+
+
+
+
+          <div>
+            <form action="/admin-menu/<%= item[:id] %>" method="POST" class="menu-actions">
+              <input type="hidden" name="_method" value="PUT">
+              <input type="submit" value="Delete">
+            </form>
+          </div>
+        </article>
+      <% end %>
+    </section>
+  </section>
+</section>
