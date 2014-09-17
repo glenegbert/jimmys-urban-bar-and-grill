@@ -1,0 +1,8 @@
+<section id="content" class="edit-menu" style="text-align: center; width: 100% !important;">
+  <form id="update-section" action="/admin-menu/sections/<%= menu_section[:id] %>/edit" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="text" name="menu[section_name]" value="<%= menu_section[:name] %>" placeholder="Section Name">
+    <input type="text" name="menu[section_description]" value="<%= menu_section[:details] %>" placeholder="Details">
+    <input type="submit" value="Save">
+  </form>
+</section>
