@@ -22,6 +22,22 @@ class Jimmys < Sinatra::Application
     erb :about_us
   end
 
+  get '/about-us/edit' do
+    erb :about_edit
+  end
+
+  post '/about-us/edit' do
+
+  end
+
+  patch '/about-us/edit' do
+
+  end
+
+  delete '/about-us/edit' do
+
+  end
+
   get '/contact-us' do
     erb :contact_us
   end
@@ -53,21 +69,57 @@ class Jimmys < Sinatra::Application
 
   get '/admin-menu' do
     erb :admin_menu
+    # , locals: { menu_items: items_in_section, menu_section: db[:menu_section].to_a }
   end
 
   post '/admin-menu' do
-    db[:menu_section][:name]       = params[menu[section_name]]
-    db[:menu_section][:details]    = params[menu[section_description]]
-    db[:menu_items][:name]         = params[menu[item_name]]
-    db[:menu_items][:price]        = params[menu[price]]
-    db[:menu_items][:description]  = params[menu[item_description]]
-    db[:menu_items][:menu_section] = params[menu[menu_section]]
-    db[:menu_items][:menu_section] = params[menu[item_menu_section]]
+
+    section_name        = params[:menu][:section_name]
+    section_description = params[:menu][:section_description]
+
+    name        = params[:menu][:item_name]
+    description = params[:menu][:item_description]
+    price       = params[:menu][:item_price]
+    section     = params[:menu][:item_menu_section]
+    # add FK for Section
+    # section     = db[:menu_sections]
+    if !section_name.nil? && !section_description.nil?
+      db[:menu_sections].insert(:name => section_name, :details => section_description)
+    end
+
+    if !name.nil? && !description.nil? && !price.nil? && !section.nil?
+      db[:menu_items].insert(:name => name, :description => description, :price => price, :menu_section_id => section)
+    end
+    require 'pry'
+    binding.pry
+    # db[:menu_sections][:name].insert(section_name)
+    # db[:menu_sections][:details].insert(section_description)
+    # insert(section_description).into(db[:menu_sections][:section_description])
+    # insert(section_name, section_description).into(db[:menu_sections]).where
+    # insert(name, price, description).into(section).where(name = section[:name] && price = section[:price], && description = section[:desctiption])
+
+    # db[:menu_sections][:details]    = params[:menu][:section_description]
+    # db[:menu_items][:name]
+    # db[:menu_items][:menu_section] = params[menu[menu_section]]
+    # db[:menu_items][:menu_section] = params[menu[item_menu_section]]
     redirect '/admin-menu'
   end
+
+  # c - post
+  # r - get
+  # u - put/patch
+  # d - delete
 
   not_found do
     erb :error
   end
+
+   # private method
+    # def items_in_section(menu_items, section_id)
+        # menu_items.to_a
+        # menu_items.collect{ |item| item[:menu_section_id] == section_id}
+        #column_name
+        # menu_section_id
+    # end
 
 end
