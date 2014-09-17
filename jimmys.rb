@@ -1,7 +1,5 @@
 require 'sinatra'
 require 'pony'
-require 'bcrypt'
-
 # require 'bcrypt'
 # require 'sinatra-flash'
 
@@ -96,7 +94,7 @@ class Jimmys < Sinatra::Application
     #if session[:is_admin] == false
       # redirect '/login'#, locals: { flash[:message] ="Username / Password not found" }
     #else
-      erb :admin_menu, locals: { user_name: current_user }
+      erb :admin_menu, locals: { user_name: current_user, menu_sections: db[:menu_sections], menu_items: db[:menu_items] }
     #end
   end
 
@@ -204,6 +202,7 @@ class Jimmys < Sinatra::Application
 
   not_found do
     erb :error
+  end
 
   private
 
