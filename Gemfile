@@ -5,10 +5,12 @@ gem 'sequel', '~> 4.14.0'
 gem 'pony', '~> 1.11'
 gem 'pg', '~> 0.17.1'
 
+
 group :development do
   gem 'pry', '~> 0.10.1'
   gem 'shotgun', '~> 0.9'
   gem 'dotenv', '~> 0.11.1'
+  gem 'tux'
 end
 
 group :test do
