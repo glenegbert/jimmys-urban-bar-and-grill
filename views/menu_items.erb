@@ -1,19 +1,24 @@
 <div class="menu-card">
+
+  <% @sections.each do |section| %>
   <div class="menu-box">
-    <% @sections.each do |section| %>
-      <h2 class="menu-category"><a><%= section[:name] %></a></h2>
+      <h2 class="menu-category">
+        <a><%= section[:name] %></a>
+      </h2>
       <p><%= section[:details] %></p>
-    <% end %>
-    <ul>
-      <li>
-        <div class="title clearfix">
-          <% @items.each do |item| %>
+      <ul>
+        <% matched_items = @items.find_all { |item| item[:menu_section_id] == section[:id] } %>
+        <% matched_items.each do |item| %>
+        <li>
+          <div class="title clearfix">
             <span><a href="/menu/<%= "#{item[:name]}".downcase.split("\s").join('-') %>/" title="Permanent Link to #{item[:name]}"><%= item[:name] %></a></span>
-            <span class="price"><%= item[:price] %></span>
-        </div>
-        <div class="description clearfix"><%= item[:description] %></div>
-      </li>
+            <span class="price"><%= "$ #{item[:price]}" %></span>
+          </div>
+          <div class="description clearfix"><%= item[:description] %></div>
+        </li>
         <% end %>
-    </ul>
+      </ul>
+    <% end %>
   </div>
+
 </div>
