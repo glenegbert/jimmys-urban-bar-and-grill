@@ -1,0 +1,25 @@
+<section id="content-admin-menu" class="admin-menu" style="text-align: center; width: 100% !important;">
+  <section class="admin-form">
+    <h2>
+      <h1><u>Admin Location Hours</u></h1>
+      <a href="/logout" class="page-button pull-right">Log Out</a>
+    </h2>
+    <section>
+      <h2>Add Location Hours</h2>
+        <form id="menu-sections" action="/admin/hours" method="post">
+            <select>
+            <input type="text" name="hours[day_of_week]" placeholder="Day of week" value="">
+            <div id="left">
+              <input type="text" name="hours[opening_hour]" placeholder="Opening hour" value="">
+              <input type="text" name="hours[opening_minute]" placeholder="Opening minute" value="">
+              <input type="text" name="hours[opening_period]" placeholder="AM or PM" value="">
+            </div>
+            <div id="right">
+              <input type="text" name="hours[closing_hour]" placeholder="Closing hour" value="">
+              <input type="text" name="hours[closing_minute]" placeholder="Closing minute" value="">
+              <input type="text" name="hours[closing_period]" placeholder="AM or PM" value="">
+          </div>
+          <input type="submit" value="Save">
+        </form>
+  </section>
+</section>

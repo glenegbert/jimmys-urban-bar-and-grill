@@ -52,11 +52,7 @@ class Jimmys < Sinatra::Application
   end
 
   get '/admin' do
-    #if !session
       erb :login
-    #else
-      # redirect '/admin-menu'
-    #end
   end
 
   post '/login' do
@@ -81,8 +77,7 @@ class Jimmys < Sinatra::Application
     description = params[:menu][:item_description]
     price       = params[:menu][:item_price]
     section     = params[:menu][:item_menu_section]
-    # add FK for Section
-    # section     = db[:menu_sections]
+
     if !section_name.nil? && !section_description.nil?
       db[:menu_sections].insert(:name => section_name, :details => section_description)
     end
@@ -91,17 +86,6 @@ class Jimmys < Sinatra::Application
       db[:menu_items].insert(:name => name, :description => description, :price => price, :menu_section_id => section)
     end
 
-    # db[:menu_sections][:name].insert(section_name)
-    # db[:menu_sections][:details].insert(section_description)
-    # insert(section_description).into(db[:menu_sections][:section_description])
-    # insert(section_name, section_description).into(db[:menu_sections]).where
-    # insert(name, price, description).into(section).where(name = section[:name] && price = section[:price], && description = section[:desctiption])
-
-    # db[:menu_sections][:details]    = params[:menu][:section_description]
-    # db[:menu_items][:name]
-    # db[:menu_items][:menu_section] = params[menu[menu_section]]
-    # db[:menu_items][:menu_section] = params[menu[item_menu_section]]
-    redirect '/admin-menu'
   end
 
   delete '/admin-menu/sections/:id' do |id|
@@ -110,8 +94,6 @@ class Jimmys < Sinatra::Application
   end
 
   get '/admin-menu/sections/:id/edit' do |id|
-    # require 'pry'
-    # binding.pry
     section = db[:menu_sections].where(id: id.to_i).to_a.first
     erb :edit_menu_section, locals: { menu_section: section }
   end
@@ -143,10 +125,64 @@ class Jimmys < Sinatra::Application
     redirect '/admin-menu'
   end
 
-  # c - post
-  # r - get
-  # u - put/patch
-  # d - delete
+  get '/admin/hours' do
+    erb :admin_hours, locals: {:hours => db[:location_hours].to_a}
+  end
+
+  post '/admin/hours' do
+
+      day_of_week       = params[:hours][:day_of_week]
+      opening_hour      = params[:hours][:opening_hour]
+      opening_minute    = params[:hours][:opening_minute]
+      opening_period    = params[:hours][:opening_period]
+      closing_hour      = params[:hours][:closing_hour]
+      closing_minutes   = params[:hours][:closing_minute]
+      closing_period    = params[:hours][:closing_period]
+
+      db[:location_hours].insert(
+                                  day_of_week:    day_of_week,
+                                  opening_hour:   opening_hour,
+                                  opening_minute: opening_minute,
+                                  opening_period: opening_period,
+                                  closing_hour:   closing_hour,
+                                  closing_minute: closing_minute,
+                                  closing_period: closing_period
+                                  )
+
+      redirect '/admin/hours'
+  end
+
+  delete '/admin/hours/:id' do |id|
+    db[:location_hours].where(id: id.to_i).delete
+    redirect '/admin/hours'
+  end
+
+  get '/admin/hours/:id/edit' do |id|
+    section = db[:location_hours].where(id: id.to_i).to_a.first
+    erb :edit_location_hours, locals: { location_hours: hours }
+  end
+
+  patch '/admin/hours/:id/edit' do |id|
+    day_of_week       = params[:hours][:day_of_week]
+    opening_hour      = params[:hours][:opening_hour]
+    opening_minute    = params[:hours][:opening_minute]
+    opening_period    = params[:hours][:opening_period]
+    closing_hour      = params[:hours][:closing_hour]
+    closing_minutes   = params[:hours][:closing_minute]
+    closing_period    = params[:hours][:closing_period]
+
+    db[:location_hours] .where(id: id.to_i)
+                        .update(
+                                day_of_week:    day_of_week,
+                                opening_hour:   opening_hour,
+                                opening_minute: opening_minute,
+                                opening_period: opening_period,
+                                closing_hour:   closing_hour,
+                                closing_minute: closing_minute,
+                                closing_period: closing_period
+                                )
+    redirect '/admin/hours'
+  end
 
   not_found do
     erb :error
