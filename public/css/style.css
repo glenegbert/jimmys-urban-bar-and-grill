@@ -2441,7 +2441,7 @@ section{
 .log-in, .admin-menu{
   height: 40em;
   background: #F9F1DF;
-  padding: 4em;
+  padding: 0 0 0 4em;
 }
 #login{
   margin-top: 14em;
@@ -2499,7 +2499,10 @@ article{
 }
 
 #add_menu_item{
-  padding-top: 112px;
+  margin-top: 112px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, .2);
+  width: 90%;
 }
 
 #content_admin_menu > section > h1 {

@@ -48,8 +48,13 @@ class Jimmys < Sinatra::Application
   end
 
   get '/menu' do
+    # require 'pry'
+    # binding.pry
+    @sections = db[:menu_sections]
+    @items    = db[:menu_items]
     erb :menu
   end
+
 
   get '/admin' do
     #if !session
@@ -143,10 +148,6 @@ class Jimmys < Sinatra::Application
     redirect '/admin-menu'
   end
 
-  # c - post
-  # r - get
-  # u - put/patch
-  # d - delete
 
   not_found do
     erb :error
