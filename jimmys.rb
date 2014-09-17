@@ -105,6 +105,25 @@ class Jimmys < Sinatra::Application
     redirect '/admin-menu'
   end
 
+  delete '/admin-menu/sections/:id' do |id|
+    db[:menu_sections].where(id: id.to_i).delete
+    redirect '/admin-menu'
+  end
+
+  get '/admin-menu/sections/:id/edit' do |id|
+    # require 'pry'
+    # binding.pry
+    section = db[:menu_sections].where(id: id.to_i).to_a.first
+    erb :edit_menu_section, locals: { menu_section: section }
+  end
+
+  patch '/admin-menu/sections/:id/edit' do |id|
+    name    = params[:menu][:section_name]
+    details = params[:menu][:details]
+    section = db[:menu_sections].detect { |section| section[:id] == id.to_i }
+    # .where(id: id.to_i).update(name: name, details: details)
+    redirect '/admin-menu'
+  end
   # c - post
   # r - get
   # u - put/patch

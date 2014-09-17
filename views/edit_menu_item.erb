@@ -1,0 +1,14 @@
+<section id="content" class="edit-menu" style="text-align: center; width: 100% !important;">
+  <form id="update-item" action="/admin-menu/item/edit/<%= section[:id] %>" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="text" name="menu[item_name]" value="" >
+    <input type="text" name="menu[item_description]" value="">
+    <input type="text" name="menu[item_price]" value="">
+    <select name="menu[item_menu_section]" form="update-item">
+      <% menu_item.each do |item| %>
+        <option value="<%= item[:id] %>"><%= item[:menu_section_id] %></option>
+      <% end %>
+    </select>
+    <input type="submit" value="Login">
+  </form>
+</section>

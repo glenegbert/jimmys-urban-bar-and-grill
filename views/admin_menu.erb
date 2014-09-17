@@ -24,7 +24,7 @@
               <input type="hidden" name="_method" value="DELETE">
               <input type="submit" value="Delete">
             </form>
-            <a href="/<%#= section.id %>/edit" class="page-button">Edit</a>
+            <a href="/admin-menu/sections/<%= section[:id] %>/edit" class="page-button">Edit</a>
           </div>
         </article>
       <%# end %>
@@ -35,7 +35,11 @@
         <input type="text" name="menu[item_name]" value="" placeholder="Menu Item">
         <input type="text" name="menu[item_description]" value="" placeholder="Description">
         <input type="text" name="menu[item_price]" value="" placeholder="Price">
-        <input type="text" name="menu[item_menu_section]" value="" placeholder="Menu Section">
+        <select name="menu[item_menu_section]" form="menu-items">
+          <% menu_items.each do |item| %>
+            <option value="<%= item[:id] %>"><%= item[:menu_section_id] %></option>
+          <% end %>
+        </select>
         <input type="submit" value="Add Item">
       </form>
       <%#= menu_item.each do |item| %>
