@@ -34,8 +34,8 @@
         <input type="text" name="menu[item_description]" value="" placeholder="Description">
         <input type="text" name="menu[item_price]" value="" placeholder="Price">
         <select name="menu[item_menu_section]" form="menu-items">
-          <% menu_items.each do |item| %>
-            <option value="<%= item[:id] %>"><%= item[:menu_section_id] %></option>
+          <% menu_sections.each do |section| %>
+            <option value="<%= section[:id] %>"><%= section[:name] %></option>
           <% end %>
         </select>
         <input type="submit" value="Add Item">
@@ -48,7 +48,7 @@
             ................................ <%= item[:price] %>
           </div>
           <div>
-            <form action="/admin-menu/<%= item[:id] %>" method="POST" class="menu-actions">
+            <form action="/admin-menu/items/<%= item[:id] %>" method="POST" class="menu-actions">
               <input type="hidden" name="_method" value="DELETE">
               <input type="submit" value="Delete">
             </form>

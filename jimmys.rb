@@ -129,6 +129,20 @@ class Jimmys < Sinatra::Application
     erb :edit_menu_item, locals: { menu_item: section }
   end
 
+  patch '/admin-menu/items/:id/edit' do |id|
+    name    = params[:menu][:item_name]
+    details = params[:menu][:item_description]
+    price   = params[:menu][:item_price]
+    db[:menu_items].where(id: id.to_i).update(name: name, description: details, price: price)
+    redirect '/admin-menu'
+  end
+
+
+  delete '/admin-menu/items/:id' do |id|
+    db[:menu_items].where(id: id.to_i).delete
+    redirect '/admin-menu'
+  end
+
   # c - post
   # r - get
   # u - put/patch
