@@ -4,6 +4,7 @@ gem 'sinatra', '~> 1.4.5'
 gem 'sequel', '~> 4.14.0'
 gem 'pony', '~> 1.11'
 gem 'pg', '~> 0.17.1'
+gem 'bcrypt', '~> 3.1.7'
 gem 'sinatra-flash', '~> 0.3.0'
 
 
