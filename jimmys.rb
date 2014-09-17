@@ -119,9 +119,8 @@ class Jimmys < Sinatra::Application
 
   patch '/admin-menu/sections/:id/edit' do |id|
     name    = params[:menu][:section_name]
-    details = params[:menu][:details]
-    section = db[:menu_sections].detect { |section| section[:id] == id.to_i }
-    # .where(id: id.to_i).update(name: name, details: details)
+    details = params[:menu][:section_description]
+    db[:menu_sections].where(id: id.to_i).update(name: name, details: details)
     redirect '/admin-menu'
   end
   # c - post
