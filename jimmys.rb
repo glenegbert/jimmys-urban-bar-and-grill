@@ -1,12 +1,14 @@
 require 'sinatra'
 require 'pony'
+require 'bcrypt'
+require_relative './lib/user'
 # require 'sinatra-flash'
 
 class Jimmys < Sinatra::Application
   # register Sinatra::Flash
   enable :sessions
 
-  attr_reader :db
+  attr_reader :db, :current_user
 
   class << self
     attr_accessor :db
@@ -68,17 +70,52 @@ class Jimmys < Sinatra::Application
     erb :menu
   end
 
+  get '/create-user' do
+    erb :create_user, locals: { message: params[:success] }
+  end
 
-  get '/admin' do
-    #if !session
-      erb :login
+  post '/create-user' do
+    if params[:password1] == params[:password2]
+      password_salt = BCrypt::Engine.generate_salt
+      password_hash = BCrypt::Engine.hash_secret(params[:password1], password_salt)
+      success = User.new(db, params[:user_name], password_hash).create?
+      route =  success ? 'admin-menu' : 'create-user'
+      redirect "/#{route}?success=#{success}"
+    else
+      redirect "/create-user?success=false"
+    end
+  end
+
+  get '/admin-menu' do
+    sections = db[:menu_sections]
+    items    = db[:menu_items]
+    erb :admin_menu, locals: { menu_sections: sections,
+                               menu_items:    items    }
+    #if db[:admin] == false
+      # redirect '/admin'#, locals: { flash[:message] ="Username / Password not found" }
     #else
-      # redirect '/admin-menu'
-    #end
+  end
+
+  post '/admin-menu' do
+    redirect '/admin-menu'
+  end
+
+  not_found do
+    erb :error
+  end
+
+  get '/login' do
+    erb :login
   end
 
   post '/login' do
-
+    user = db[:user].find_by_user_name(params[:user_name])
+    if user[:password_hash] == params[:password_hash]
+      session[:is_admin] = True
+      redirect '/admin_menu?success=true'
+    else
+      redirect '/login?success=false'
+    end
   end
 
   get '/logout' do
@@ -87,11 +124,12 @@ class Jimmys < Sinatra::Application
   end
 
   get '/admin-menu' do
-    erb :admin_menu, locals: {:menu_items => db[:menu_items].to_a, :menu_sections => db[:menu_sections].to_a}
+    erb :admin_menu, locals: { :menu_items => db[:menu_items].to_a,
+                               :menu_sections => db[:menu_sections].to_a
+                              }
   end
 
   post '/admin-menu' do
-
     section_name        = params[:menu][:section_name]
     section_description = params[:menu][:section_description]
 
@@ -128,8 +166,6 @@ class Jimmys < Sinatra::Application
   end
 
   get '/admin-menu/sections/:id/edit' do |id|
-    # require 'pry'
-    # binding.pry
     section = db[:menu_sections].where(id: id.to_i).to_a.first
     erb :edit_menu_section, locals: { menu_section: section }
   end
@@ -165,6 +201,10 @@ class Jimmys < Sinatra::Application
   not_found do
     erb :error
   end
+
+  private
+
+
 
 
 

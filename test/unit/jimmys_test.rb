@@ -8,7 +8,7 @@ describe Jimmys do
     Jimmys.new
   end
 
-  describe 'correctly loads page routes' do
+  describe 'correctly loads pages' do
     it 'correctly loads home page' do
       get '/'
       assert_equal 200, last_response.status
