@@ -1,0 +1,61 @@
+<section id="content_admin_menu" class="admin-menu" style="text-align: center; width: 100% !important;">
+  <section class="admin-form">
+    <h2>
+      <h1><u>Admin Menu</u></h1>
+      <a href="/logout" class="page-button pull-right">Log Out</a>
+    </h2>
+    <section>
+      <h2>Add Menu Section</h2>
+      <form id="menu-sections" action="/admin-menu" method="post">
+        <input type="text" name="menu[section_name]" value="" placeholder="Menu Section">
+        <input type="text" name="menu[section_description]" value="" placeholder="Description">
+        <input type="submit" value="Create Section">
+      </form>
+      <% menu_sections.each do |section| %>
+        <article class="menu-section">
+          <div>
+            <h2><%= section[:name] %></h2>
+            <h4><%= section[:details] %></h4>
+          </div>
+          <div>
+            <form action="/admin-menu/sections/<%= section[:id] %>" method="POST" class="menu-actions">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete">
+            </form>
+            <a href="/admin-menu/sections/<%= section[:id] %>/edit" class="page-button">Edit</a>
+          </div>
+        </article>
+      <% end %>
+    </section>
+    <section id="add_menu_item">
+      <h2>Add Menu Item</h2>
+      <form id="menu-items" action="/admin-menu" method="post">
+        <input type="text" name="menu[item_name]" value="" placeholder="Menu Item">
+        <input type="text" name="menu[item_description]" value="" placeholder="Description">
+        <input type="text" name="menu[item_price]" value="" placeholder="Price">
+        <select name="menu[item_menu_section]" form="menu-items">
+          <% menu_sections.each do |section| %>
+            <option value="<%= section[:id] %>"><%= section[:name] %></option>
+          <% end %>
+        </select>
+        <input type="submit" value="Add Item">
+      </form>
+      <% menu_items.each do |item| %>
+        <article class="menu-item">
+          <div>
+            <h4><%= item[:name] %></h4>
+            <h4><%= item[:description] %></h4>
+            ................................ <%= item[:price] %>
+          </div>
+          <div>
+            <form action="/admin-menu/items/<%= item[:id] %>" method="POST" class="menu-actions">
+              <input type="hidden" name="_method" value="DELETE">
+              <input type="submit" value="Delete">
+            </form>
+            <a href="/admin-menu/items/<%= item[:id] %>/edit" class="page-button">Edit</a>
+          </div>
+        </article>
+      <% end %>
+    </section>
+  </section>
+</section>
