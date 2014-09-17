@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem 'sinatra', '~> 1.4.5'
 gem 'sequel', '~> 4.14.0'
+gem 'pony', '~> 1.11'
 
 group :development do
   gem 'pry', '~> 0.10.1'
