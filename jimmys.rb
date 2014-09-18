@@ -57,11 +57,11 @@ class Jimmys < Sinatra::Application
 
 
   get '/admin' do
-    #if !session
-      erb :login
-    #else
-      # redirect '/admin-menu'
-    #end
+    # if !session
+    #   erb :login
+    # else
+    #   redirect '/unauthorized'
+    # end
   end
 
   post '/login' do
