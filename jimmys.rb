@@ -52,7 +52,7 @@ class Jimmys < Sinatra::Application
       :subject => params[:subject],
       :from    => params[:mail],
       :body    => params[:message],
-      :to      => 'jimsuttonjimsutton@gmail.com',
+      :to      => 'jimmysurbanbarandgrill@yahoo.com',
       :via     => :sendmail
     })
     redirect '/'
