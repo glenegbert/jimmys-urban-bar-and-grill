@@ -136,7 +136,7 @@ class Jimmys < Sinatra::Application
       opening_minute    = params[:hours][:opening_minute]
       opening_period    = params[:hours][:opening_period]
       closing_hour      = params[:hours][:closing_hour]
-      closing_minutes   = params[:hours][:closing_minute]
+      closing_minute   = params[:hours][:closing_minute]
       closing_period    = params[:hours][:closing_period]
 
       db[:location_hours].insert(

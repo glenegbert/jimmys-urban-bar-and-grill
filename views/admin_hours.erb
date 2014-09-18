@@ -7,8 +7,15 @@
     <section>
       <h2>Add Location Hours</h2>
         <form id="menu-sections" action="/admin/hours" method="post">
-            <select>
-            <input type="text" name="hours[day_of_week]" placeholder="Day of week" value="">
+            <select name="hours[day_of_week]" placeholder="Opening hour" value="">
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+              <option>Thursday</option>
+              <option>Friday</option>
+              <option>Saturday</option>
+              <option>Sunday</option>
+            </select>
             <div id="left">
               <input type="text" name="hours[opening_hour]" placeholder="Opening hour" value="">
               <input type="text" name="hours[opening_minute]" placeholder="Opening minute" value="">
