@@ -126,6 +126,7 @@ class Jimmys < Sinatra::Application
   end
 
   get '/admin/hours' do
+    @hours = db[:location_hours]
     erb :admin_hours, locals: {:hours => db[:location_hours].to_a}
   end
 
