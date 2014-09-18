@@ -30,16 +30,37 @@ class Jimmys < Sinatra::Application
     erb :about_edit
   end
 
-  post '/about-us/edit' do
+  # post '/about-us/:id/edit' do |id|
+  #   title1     = params[:article][:title1]
+  #   paragraph1 = params[:article][:paragraph1]
+  #   title2     = params[:article][:title2]
+  #   paragraph2 = params[:article][:paragraph2]
+  #   db[:about_us].insert(title1:    title1,
+  #                         paragraph1: paragraph1,
+  #                         title2:     title2,
+  #                         paragraph2: paragraph2
+  #                         )
+  #   redirect '/about-us'
+  # end
 
+  patch '/about-us/:id/edit' do |id|
+    about_page = db[:about_us].where(id: id.to_i)
+    title1     = params[:article][:title1]
+    paragraph1 = params[:article][:paragraph1]
+    title2     = params[:article][:title2]
+    paragraph2 = params[:article][:paragraph2]
+
+    about.insert(title1:     title1,
+                 paragraph1: paragraph1,
+                 title2:     title2,
+                 paragraph2: paragraph2
+                 )
+    redirect '/'
   end
 
-  patch '/about-us/edit' do
-
-  end
-
-  delete '/about-us/edit' do
-
+  delete '/about-us/:id/edit' do |id|
+    db[:about_us].where(id: id.to_i).delete
+    redirect '/admin-menu'
   end
 
   get '/contact-us' do

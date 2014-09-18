@@ -1,0 +1,14 @@
+<section id="content" class="edit-menu" style="text-align: center; width: 100% !important;padding-top: 78px;padding-bottom: 112px;">
+  <h1>Edit About Us</h1>
+
+  <form id="update-section" action="/about-us/<%= id %>/edit" method="post">
+
+    <input type="hidden" name="_method" value="PATCH">
+    <input type="text" name="menu[section_name]" value="<%= article[:paragraph1] %>" placeholder="Heading">
+
+    <br>
+    <input type="text" name="menu[section_name]" value="<%= article[:paragraph2] %>" placeholder="Heading">
+
+    <input type="submit" value="Save">
+  </form>
+</section>
