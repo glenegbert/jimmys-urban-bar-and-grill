@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem 'sinatra', '~> 1.4.5'
 gem 'sequel', '~> 4.14.0'
 gem 'pg', '~> 0.17.1'
+gem 'pony', '~> 1.11'
 
 
 group :development do
